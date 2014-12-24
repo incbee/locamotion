@@ -1,4 +1,5 @@
 require 'simplecov'
+require 'aruba/cucumber'
 
 module SimpleCov::Configuration
   def clean_filters
