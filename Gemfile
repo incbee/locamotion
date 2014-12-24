@@ -6,6 +6,7 @@ source "http://rubygems.org"
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.
 gem 'thor', "~> 0"
+gem 'aruba', "~> 0"
 group :development do
   gem "rspec", "~> 2.8.0"
   gem "rdoc", "~> 3.12"
