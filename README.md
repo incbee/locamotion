@@ -3,7 +3,7 @@
 Locamotion is a helper tool for automating localizing RubyMotion apps using [SugarCube localized](https://github.com/rubymotion/sugarcube).
 
 ## Installation
-  gem install locamotion
+    gem install locamotion
 
 ## Usage
 
@@ -13,7 +13,7 @@ Locamotion has two commands to be run in any RubyMotion project folder:
 
 With slurp, Locamotion will go through the _app_ directory of the RubyMotion project and find all localized strings. These are declared with Sugarcube as follows:
 
-  "I am a localized string"._
+    "I am a localized string"._
 
 Locamotion will then look in the _resources/en.lproj/Localizable.strings_ file, create it if it doesn't exist, and then add the strings that are missing from it.
 
