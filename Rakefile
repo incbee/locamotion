@@ -15,12 +15,13 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
   gem.name = "locamotion"
-  gem.homepage = "http://github.com/ramonh/locamotion"
+  gem.homepage = "http://github.com/incbee/locamotion"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{CLI tool to generate localizable files in RubyMotion projects}
+  gem.description = %Q{Locamotion (Localization Motion) is a Command Line tool to generate localizable files in RubyMotion projects. It parses the 'app' directory for SugarCube (https://github.com/rubymotion/sugarcube) strings, ending in '._'. It also transfers the english localized files into others.}
   gem.email = "ramon.martin.huidobro@gmail.com"
   gem.authors = ["Ramon Huidobro"]
+  gem.executables = ['locamotion']
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
