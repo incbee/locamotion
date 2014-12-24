@@ -1,9 +1,18 @@
-Feature: something something
-  In order to something something
-  A user something something
-  something something something
+Feature: Locamotion
+  In order to automate localization of RubyMotion apps
+  As a user
+  I should be able to use locamotion to slurp and generate localizable strings
 
-  Scenario: something something
-    Given inspiration
-    When I create a sweet new gem
-    Then everyone should see how awesome I am
+
+  Background:
+
+    In order to slurp and/or generate localization strings, users
+    should have a RubyMotion project with some ruby files.
+
+    Given a file named 'app/test.rb' with:
+      """
+      puts "I am localized!"._
+      string = 'I am also localized."._
+      """
+
+  Scenario: Slurp with english files
