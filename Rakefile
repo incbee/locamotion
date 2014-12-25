@@ -22,6 +22,7 @@ Jeweler::Tasks.new do |gem|
   gem.email = "ramon.martin.huidobro@gmail.com"
   gem.authors = ["Ramon Huidobro"]
   gem.executables = ['locamotion']
+  gem.files.include %w(lib/**/*.rb)
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
