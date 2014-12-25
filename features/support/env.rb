@@ -1,5 +1,4 @@
 require 'simplecov'
-require 'aruba/cucumber'
 
 module SimpleCov::Configuration
   def clean_filters
@@ -25,6 +24,10 @@ rescue Bundler::BundlerError => e
 end
 
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../../lib')
-require 'locamotion'
-
 require 'rspec/expectations'
+require 'aruba/cucumber'
+require 'aruba/in_process'
+require 'locamotion/runner'
+
+Aruba::InProcess.main_class = Locamotion::Runner
+Aruba.process = Aruba::InProcess

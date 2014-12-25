@@ -25,5 +25,5 @@ Feature: Locamotion
 
     To slurp, the user has to call "locamotion slurp"
 
-    When I run "locamotion slurp"
-    Then the output should contain exactly "#2 new string entered into ./resources/en.lproj/Localizable.strings"
+    When I run `locamotion slurp`
+    Then the output should contain exactly "2 new strings entered into ./resources/en.lproj/Localizable.strings"
