@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'locamotion'
+
+Locamotion::Runner.new(ARGV.dup).execute!
