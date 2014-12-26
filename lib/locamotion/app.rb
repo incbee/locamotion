@@ -1,12 +1,11 @@
 require 'thor'
 
 module Locamotion
-
   class App < Thor
     desc 'slurp', "Slurp the app's localized strings into the English localization"
 
     def slurp
-      if File.exists? 'app'
+      if File.exist? 'app'
         slurp_main
       else
         abort "Error: 'app' folder not found. Are you running Locamotion in a RubyMotion project?"
@@ -16,14 +15,14 @@ module Locamotion
     desc 'generate', "Generate the other language's strings based on that of the english localization"
 
     def generate
-      if File.exists? 'resources'
+      if File.exist? 'resources'
         generate_main
       else
         abort "Error: 'resources' folder not found. Are you running Locamotion in a RubyMotion project?"
       end
     end
 
-    private 
+    private
 
     def slurp_main
       matches = parse_rubymotion_app
@@ -57,7 +56,7 @@ module Locamotion
     end
 
     def create_folder(folder)
-      FileUtils.mkdir_p(folder) unless File.exists?(folder)
+      FileUtils.mkdir_p(folder) unless File.exist?(folder)
     end
 
     def parse_rubymotion_app
