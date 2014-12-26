@@ -67,7 +67,7 @@ Feature: Locamotion
 
   Scenario: Generate Spanish and German strings with some taken strings
 
-    Users can generate strings for several existing localizations
+    Users can generate missing strings for several existing localizations
     from the English ones using 'locamotion generate'
 
     Given a directory named "resources/de.lproj"
@@ -91,4 +91,38 @@ Feature: Locamotion
       """
       "I am localized!" = "I am localized!";
       "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
+      """
+
+  Scenario: Generate Spanish and German strings with all taken strings
+
+    Users can attempt to generate strings for existing localizations,
+    even though these are all taken.
+
+    Given a directory named "resources/de.lproj"
+    Given a file named "resources/es.lproj/Localizable.strings" with:
+    """
+    "I am localized!" = "Tengo traduccion!";
+    "I am also localized." = "Yo tambien tengo traduccion.";
+    "I am localized with a value of #{value}." = "Tengo traduccion con el valor #{value}.";
+    """
+    Given a file named "resources/de.lproj/Localizable.strings" with:
+    """
+    "I am localized!" = "Ich bin übersetzt!";
+    "I am also localized." = "Ich bin auch übersetzt.";
+    "I am localized with a value of #{value}." = "Ich bin mit den wert #{value} übersetzt.";
+    """
+    When I run `locamotion generate`
+    Then the output should contain "No new strings added to resources/de.lproj/Localizable.strings"
+    Then the output should contain "No new strings added to resources/es.lproj/Localizable.strings"
+    And the file "resources/es.lproj/Localizable.strings" should contain:
+      """
+      "I am localized!" = "Tengo traduccion!";
+      "I am also localized." = "Yo tambien tengo traduccion.";
+      "I am localized with a value of #{value}." = "Tengo traduccion con el valor #{value}.";
+      """
+    And the file "resources/de.lproj/Localizable.strings" should contain:
+      """
+      "I am localized!" = "Ich bin übersetzt!";
+      "I am also localized." = "Ich bin auch übersetzt.";
+      "I am localized with a value of #{value}." = "Ich bin mit den wert #{value} übersetzt.";
       """
