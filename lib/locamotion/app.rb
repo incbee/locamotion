@@ -32,7 +32,7 @@ module Locamotion
         matches.each do |string|
           strings_added_count += 1 if add_missing_string(localizable, string)
         end
-        announce_slurp_results(strings_added_count)
+        puts announce_slurp_results(strings_added_count)
       end
 
       def generate_main
@@ -55,7 +55,7 @@ module Locamotion
           string = match[/(".*")\s*=/, 1]
           strings_added_count += 1 if add_missing_localized_string(localized_strings_file, string)
         end
-        announce_generate_results(strings_added_count, localized_strings_file)
+        puts announce_generate_results(strings_added_count, localized_strings_file)
       end
 
       def parse_rubymotion_app(path)
@@ -89,17 +89,17 @@ module Locamotion
 
       def announce_slurp_results(strings_added_count)
         if strings_added_count > 0
-          puts "#{strings_added_count} new string#{strings_added_count == 1 ? '' : 's'} entered into ./resources/en.lproj/Localizable.strings"
+          "#{strings_added_count} new string#{strings_added_count == 1 ? '' : 's'} entered into ./resources/en.lproj/Localizable.strings"
         else
-          puts 'No new strings added.'
+          'No new strings added.'
         end
       end
 
       def announce_generate_results(strings_added_count, localized_strings_file)
         if strings_added_count > 0
-          puts "#{strings_added_count} new string#{strings_added_count == 1 ? '' : 's'} entered into #{localized_strings_file}"
+          "#{strings_added_count} new string#{strings_added_count == 1 ? '' : 's'} entered into #{localized_strings_file}"
         else
-          puts "No new strings added to #{localized_strings_file}."
+          "No new strings added to #{localized_strings_file}."
         end
       end
     }
