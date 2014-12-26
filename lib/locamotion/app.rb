@@ -24,7 +24,7 @@ module Locamotion
 
     no_commands {
       def slurp_main
-        matches = parse_rubymotion_app
+        matches = parse_rubymotion_app('app/**/*.rb')
         FileUtils.mkdir_p('resources/en.lproj') unless File.exist?('resources/en.lproj')
         localizable = 'resources/en.lproj/Localizable.strings'
         system("touch #{localizable}")
@@ -58,9 +58,9 @@ module Locamotion
         announce_generate_results(strings_added_count, localized_strings_file)
       end
 
-      def parse_rubymotion_app
+      def parse_rubymotion_app(path)
         matches = []
-        Dir.glob('app/**/*.rb') do |ruby_file|
+        Dir.glob(path) do |ruby_file|
           File.open(ruby_file).each do |line|
             matches += line.scan(/"([^"]+)"\._/)
             matches += line.scan(/'([^']+)'\._/)
