@@ -126,3 +126,12 @@ Feature: Locamotion
       "I am also localized." = "Ich bin auch übersetzt.";
       "I am localized with a value of #{value}." = "Ich bin mit den wert #{value} übersetzt.";
       """
+
+  Scenario: Attempt to run Locamotion where there's no RubyMotion project
+
+    Users should be informed that they're trying to run Locamotion outside
+    of a RubyMotion project, which won't work.
+
+    When I cd to "../"
+    And I run `locamotion generate`
+    Then the stderr should contain "Error: 'resources' folder not found. Are you running Locamotion in a RubyMotion project?"
