@@ -27,7 +27,13 @@ Feature: Locamotion
 
     When I run `locamotion slurp`
     Then the output should contain "3 new strings"
-
+    And the file "resources/en.lproj/Localizable.strings" should contain:
+      """
+      "I am localized!" = "I am localized!";
+      "I am also localized." = "I am also localized.";
+      "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
+      """
+  
   Scenario: Slurp with existing english files
 
     Users can add missing strings to their english file.
@@ -38,6 +44,11 @@ Feature: Locamotion
     """
     When I run `locamotion slurp`
     Then the output should contain "2 new strings"
+    And the file "resources/en.lproj/Localizable.strings" should contain:
+    """
+    "I am also localized." = "I am also localized.";
+    "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
+    """
 
   Scenario: Slurp with all existing english strings
 
@@ -51,3 +62,11 @@ Feature: Locamotion
     """
     When I run `locamotion slurp`
     Then the output should contain "No new strings"
+    And the file "resources/en.lproj/Localizable.strings" should contain:
+    """
+    "I am localized!" = "I am localized!";
+    "I am also localized." = "I am also localized.";
+    "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
+    """
+
+  Scenario: Generate Spanish strings
