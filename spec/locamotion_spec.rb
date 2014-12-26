@@ -2,6 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe "Locamotion" do
   before do
+    FileUtils.rm_rf('/tmp/rm_project') if File.exist?('/tmp/rm_project')
     FileUtils.mkdir_p('/tmp/rm_project/app')
     content = <<-eos
     "I am localized!"._
