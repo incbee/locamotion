@@ -21,5 +21,17 @@ describe "Locamotion" do
     it "gets all localizable strings" do
       expect(@app.parse_rubymotion_app('/tmp/rm_project/app/**/*.rb')).to match_array(["I am localized!", "I am also localized.", "I am to be localized"])
     end
+
+    it "announces 3 finished strings" do
+      expect(@app.announce_slurp_results(3)).to eq("3 new strings entered into ./resources/en.lproj/Localizable.strings")
+    end
+
+    it "announces 1 finished string" do
+      expect(@app.announce_slurp_results(1)).to eq("1 new string entered into ./resources/en.lproj/Localizable.strings")
+    end
+
+    it "announces no finished strings" do
+      expect(@app.announce_slurp_results(0)).to eq("No new strings added.")
+    end
   end
 end
