@@ -23,6 +23,7 @@ Jeweler::Tasks.new do |gem|
   gem.authors = ["Ramon Huidobro"]
   gem.executables = ['locamotion']
   gem.files.include %w(lib/**/*.rb)
+  gem.copright_holder = 'Incredible Bee Ltd.'
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
