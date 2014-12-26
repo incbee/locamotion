@@ -5,6 +5,9 @@ coverage.data
 # rdoc generated
 rdoc
 
+# aruba test files
+tmp
+
 # yard generated
 doc
 .yardoc
