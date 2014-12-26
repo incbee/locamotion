@@ -2,7 +2,6 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe "Locamotion" do
   before do
-    FileUtils.rm_rf('/tmp/rm_project')
     FileUtils.mkdir_p('/tmp/rm_project/app')
     content = <<-eos
     "I am localized!"._
@@ -11,6 +10,10 @@ describe "Locamotion" do
     File.open('/tmp/rm_project/app/test1.rb', 'a+') { |f| f.write(content) }
     File.open('/tmp/rm_project/app/test2.rb', 'a+') { |f| f.write("\"I am to be localized\"._") }
     @app = Locamotion::App.new 
+  end
+
+  after do
+    FileUtils.rm_rf('/tmp/rm_project')
   end
 
   describe "slurp" do
