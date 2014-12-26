@@ -1,7 +1,7 @@
 Feature: Locamotion
-  In order to automate localization of RubyMotion apps
+  In order to automate English localization in RubyMotion apps
   As a user
-  I should be able to use locamotion to slurp and generate localizable strings
+  I should be able to use locamotion to slurp English strings
 
 
   Background:
@@ -68,5 +68,3 @@ Feature: Locamotion
     "I am also localized." = "I am also localized.";
     "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
     """
-
-  Scenario: Generate Spanish strings
