@@ -27,3 +27,27 @@ Feature: Locamotion
 
     When I run `locamotion slurp`
     Then the output should contain "3 new strings"
+
+  Scenario: Slurp with existing english files
+
+    Users can add missing strings to their english file.
+
+    Given a file named "resources/en.lproj/Localizable.strings" with:
+    """
+    "I am localized!" = "I am localized!";
+    """
+    When I run `locamotion slurp`
+    Then the output should contain "2 new strings"
+
+  Scenario: Slurp with all existing english strings
+
+    Locamotion should not add strings that already exist.
+
+    Given a file named "resources/en.lproj/Localizable.strings" with:
+    """
+    "I am localized!" = "I am localized!";
+    "I am also localized." = "I am also localized.";
+    "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
+    """
+    When I run `locamotion slurp`
+    Then the output should contain "No new strings"
