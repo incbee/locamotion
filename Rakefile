@@ -37,6 +37,7 @@ desc "Code coverage detail"
 task :simplecov do
   ENV['COVERAGE'] = "true"
   Rake::Task['spec'].execute
+  Rake::Task['features'].execute
 end
 
 require 'cucumber/rake/task'
