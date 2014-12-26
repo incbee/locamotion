@@ -1,4 +1,4 @@
-Feature: Locamotion
+Feature: Locamotion generate
   In order to automate localization in RubyMotion apps for languages other than English
   As a user
   I should be able to use locamotion to generate strings

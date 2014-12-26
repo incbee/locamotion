@@ -1,4 +1,4 @@
-Feature: Locamotion
+Feature: Locamotion slurp
   In order to automate English localization in RubyMotion apps
   As a user
   I should be able to use locamotion to slurp English strings
