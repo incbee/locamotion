@@ -26,7 +26,7 @@ module Locamotion
 
     def slurp_main
       matches = parse_rubymotion_app
-      create_folder('resources/en.lproj')
+      FileUtils.mkdir_p('resources/en.lproj') unless File.exist?('resources/en.lproj')
       localizable = 'resources/en.lproj/Localizable.strings'
       system("touch #{localizable}")
       strings_added_count = 0
@@ -53,10 +53,6 @@ module Locamotion
           announce_generate_results(strings_added_count, localized_strings_file)
         end
       end
-    end
-
-    def create_folder(folder)
-      FileUtils.mkdir_p(folder) unless File.exist?(folder)
     end
 
     def parse_rubymotion_app
