@@ -32,8 +32,6 @@ With generate, Locamotion will go through the strings inside each localizable fi
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-## Copyright
+## License
 
-Copyright (c) 2014 Incredible Bee Ltd. See LICENSE.txt for
-further details.
-
+Locamotion is Copyright © 2014 Incredible Bee. It is free software, and may be redistributed under the terms specified in the [LICENSE](https://github.com/incbee/locamotion/blob/master/LICENSE) file.
