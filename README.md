@@ -34,4 +34,4 @@ With generate, Locamotion will go through the strings inside each localizable fi
 
 ## License
 
-Locamotion is Copyright © 2014 Incredible Bee. It is free software, and may be redistributed under the terms specified in the [LICENSE](https://github.com/incbee/locamotion/blob/master/LICENSE) file.
+Locamotion is Copyright © 2014 Incredible Bee. It is free software, and may be redistributed under the terms specified in the [LICENSE](https://github.com/incbee/locamotion/blob/master/LICENSE.txt) file.
