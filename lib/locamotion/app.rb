@@ -89,7 +89,7 @@ module Locamotion
 
       def announce_slurp_results(strings_added_count)
         if strings_added_count > 0
-          "#{strings_added_count} new string#{strings_added_count == 1 ? '' : 's'} entered into ./resources/en.lproj/Localizable.strings"
+          "#{strings_added_count} new string#{strings_added_count == 1 ? '' : 's'} entered into resources/en.lproj/Localizable.strings"
         else
           'No new strings added.'
         end
