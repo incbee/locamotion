@@ -19,6 +19,10 @@ Feature: Locamotion slurp
       value = 3
       string = "I am localized with a value of #{value}."._
       """
+    And a file named "rm-project/app/test3.rb" with:
+      """
+      array = ['first string'._, 'second string'._, 'third string'._]
+      """
     When I cd to "rm-project"
 
   Scenario: Slurp with english files
@@ -26,12 +30,15 @@ Feature: Locamotion slurp
     To slurp, the user has to call "locamotion slurp"
 
     When I run `locamotion slurp`
-    Then the output should contain "3 new strings"
+    Then the output should contain "6 new strings"
     And the file "resources/en.lproj/Localizable.strings" should contain:
       """
       "I am localized!" = "I am localized!";
       "I am also localized." = "I am also localized.";
       "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
+      "first string" = "first string";
+      "second string" = "second string";
+      "third string" = "third string";
       """
   
   Scenario: Slurp with existing english files
@@ -43,11 +50,14 @@ Feature: Locamotion slurp
     "I am localized!" = "I am localized!";
     """
     When I run `locamotion slurp`
-    Then the output should contain "2 new strings"
+    Then the output should contain "5 new strings"
     And the file "resources/en.lproj/Localizable.strings" should contain:
     """
     "I am also localized." = "I am also localized.";
     "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
+    "first string" = "first string";
+    "second string" = "second string";
+    "third string" = "third string";
     """
 
   Scenario: Slurp with all existing english strings
@@ -59,6 +69,9 @@ Feature: Locamotion slurp
     "I am localized!" = "I am localized!";
     "I am also localized." = "I am also localized.";
     "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
+    "first string" = "first string";
+    "second string" = "second string";
+    "third string" = "third string";
     """
     When I run `locamotion slurp`
     Then the output should contain "No new strings"
@@ -67,6 +80,9 @@ Feature: Locamotion slurp
     "I am localized!" = "I am localized!";
     "I am also localized." = "I am also localized.";
     "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
+    "first string" = "first string";
+    "second string" = "second string";
+    "third string" = "third string";
     """
 
   Scenario: Attempt to run Locamotion where there's no RubyMotion project
