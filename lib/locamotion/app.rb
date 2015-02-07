@@ -62,8 +62,8 @@ module Locamotion
         matches = []
         Dir.glob(path) do |ruby_file|
           File.open(ruby_file).each do |line|
-            matches += line.scan(/"([^"]+)"\._/)
-            matches += line.scan(/'([^']+)'\._/)
+            matches += line.scan(/"(.*?)"\._/)
+            matches += line.scan(/'(.*?)'\._/)
           end
         end
         matches.flatten
