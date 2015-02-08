@@ -22,11 +22,11 @@ describe "Slurp" do
   end
 
   it "announces 3 finished strings" do
-    expect(@app.announce_slurp_results(3)).to eq("3 new strings entered into ./resources/en.lproj/Localizable.strings")
+    expect(@app.announce_slurp_results(3)).to eq("3 new strings entered into resources/en.lproj/Localizable.strings")
   end
 
   it "announces 1 finished string" do
-    expect(@app.announce_slurp_results(1)).to eq("1 new string entered into ./resources/en.lproj/Localizable.strings")
+    expect(@app.announce_slurp_results(1)).to eq("1 new string entered into resources/en.lproj/Localizable.strings")
   end
 
   it "announces no finished strings" do
