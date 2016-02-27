@@ -2,6 +2,8 @@ require 'thor'
 
 module Locamotion
   class App < Thor
+    map %w[--version -v] => :__print_version
+
     desc 'slurp', "Slurp the app's localized strings into the English localization"
 
     def slurp
@@ -20,6 +22,12 @@ module Locamotion
       else
         abort "Error: 'resources' folder not found. Are you running Locamotion in a RubyMotion project?"
       end
+    end
+
+    desc "--version, -v", "print the version"
+
+    def __print_version
+      puts '0.0.3'
     end
 
     no_commands {
