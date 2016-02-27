@@ -18,6 +18,7 @@ Feature: Locamotion slurp
       """
       value = 3
       string = "I am localized with a value of #{value}."._
+      item.title = NSString.stringWithFormat("Export All Contents in "%@"…"._, object.name)
       """
     And a file named "rm-project/app/test3.rb" with:
       """
@@ -30,23 +31,25 @@ Feature: Locamotion slurp
     To slurp, the user has to call "locamotion slurp"
 
     When I run `locamotion slurp`
-    Then the output should contain "6 new strings"
+    Then the output should contain "7 new strings"
     And the file "resources/en.lproj/Localizable.strings" should contain:
       """
       "I am localized!" = "I am localized!";
       "I am also localized." = "I am also localized.";
       "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
+      "Export All Contents in "%@"…" = "Export All Contents in "%@"…";
       "first string" = "first string";
       "second string" = "second string";
       "third string" = "third string";
       """
-  
+
   Scenario: Slurp with existing english files
 
     Users can add missing strings to their english file.
 
     Given a file named "resources/en.lproj/Localizable.strings" with:
     """
+    "Export All Contents in "%@"…" = "Export All Contents in "%@"…";
     "I am localized!" = "I am localized!";
     """
     When I run `locamotion slurp`
@@ -69,6 +72,7 @@ Feature: Locamotion slurp
     "I am localized!" = "I am localized!";
     "I am also localized." = "I am also localized.";
     "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
+    "Export All Contents in "%@"…" = "Export All Contents in "%@"…";
     "first string" = "first string";
     "second string" = "second string";
     "third string" = "third string";
@@ -80,6 +84,7 @@ Feature: Locamotion slurp
     "I am localized!" = "I am localized!";
     "I am also localized." = "I am also localized.";
     "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
+    "Export All Contents in "%@"…" = "Export All Contents in "%@"…";
     "first string" = "first string";
     "second string" = "second string";
     "third string" = "third string";

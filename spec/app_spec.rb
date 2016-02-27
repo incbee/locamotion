@@ -7,6 +7,7 @@ describe "Slurp" do
     content = <<-eos
     "I am localized!"._
     "I am also localized."._
+    "Export \"%@\" Object…"._
     eos
     File.open('/tmp/rm_project/app/test1.rb', 'a+') { |f| f.write(content) }
     File.open('/tmp/rm_project/app/test2.rb', 'a+') { |f| f.write("\"I am to be localized\"._") }
@@ -18,11 +19,11 @@ describe "Slurp" do
   end
 
   it "gets all localizable strings" do
-    expect(@app.parse_rubymotion_app('/tmp/rm_project/app/**/*.rb')).to match_array(["I am localized!", "I am also localized.", "I am to be localized"])
+    expect(@app.parse_rubymotion_app('/tmp/rm_project/app/**/*.rb')).to match_array(["I am localized!", "I am also localized.", "I am to be localized", "Export \"%@\" Object…"])
   end
 
-  it "announces 3 finished strings" do
-    expect(@app.announce_slurp_results(3)).to eq("3 new strings entered into resources/en.lproj/Localizable.strings")
+  it "announces 4 finished strings" do
+    expect(@app.announce_slurp_results(4)).to eq("4 new strings entered into resources/en.lproj/Localizable.strings")
   end
 
   it "announces 1 finished string" do
