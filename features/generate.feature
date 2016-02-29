@@ -18,14 +18,14 @@ Feature: Locamotion generate
       """
       value = 3
       string = "I am localized with a value of #{value}."._
-      item.title = NSString.stringWithFormat("Export All Contents in "%@"…"._, object.name)
+      field = NSString.dateTimeFieldWithVariable('filename', label: 'Filename'._)
       """
     And a file named "rm-project/resources/en.lproj/Localizable.strings" with:
     """
     "I am localized!" = "I am localized!";
     "I am also localized." = "I am also localized.";
     "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
-    "Export All Contents in "%@"…" = "Export All Contents in "%@"…";
+    "Filename" = "Filename";
     """
     Given a directory named "rm-project/resources/es.lproj"
     When I cd to "rm-project"
@@ -43,7 +43,7 @@ Feature: Locamotion generate
       "I am localized!" = "I am localized!";
       "I am also localized." = "I am also localized.";
       "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
-      "Export All Contents in "%@"…" = "Export All Contents in "%@"…";
+      "Filename" = "Filename";
       """
 
   Scenario: Generate Spanish and German strings
@@ -60,14 +60,14 @@ Feature: Locamotion generate
       "I am localized!" = "I am localized!";
       "I am also localized." = "I am also localized.";
       "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
-      "Export All Contents in "%@"…" = "Export All Contents in "%@"…";
+      "Filename" = "Filename";
       """
     And the file "resources/de.lproj/Localizable.strings" should contain:
       """
       "I am localized!" = "I am localized!";
       "I am also localized." = "I am also localized.";
       "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
-      "Export All Contents in "%@"…" = "Export All Contents in "%@"…";
+      "Filename" = "Filename";
       """
 
   Scenario: Generate Spanish and German strings with some taken strings
@@ -91,13 +91,13 @@ Feature: Locamotion generate
     And the file "resources/es.lproj/Localizable.strings" should contain:
       """
       "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
-      "Export All Contents in "%@"…" = "Export All Contents in "%@"…";
+      "Filename" = "Filename";
       """
     And the file "resources/de.lproj/Localizable.strings" should contain:
       """
       "I am localized!" = "I am localized!";
       "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
-      "Export All Contents in "%@"…" = "Export All Contents in "%@"…";
+      "Filename" = "Filename";
       """
 
   Scenario: Generate Spanish and German strings with all taken strings
@@ -111,14 +111,14 @@ Feature: Locamotion generate
     "I am localized!" = "Tengo traduccion!";
     "I am also localized." = "Yo tambien tengo traduccion.";
     "I am localized with a value of #{value}." = "Tengo traduccion con el valor #{value}.";
-    "Export All Contents in "%@"…" = "Exportar contenidos de "%@"…";
+    "Filename" = "Nombre de archivo";
     """
     Given a file named "resources/de.lproj/Localizable.strings" with:
     """
     "I am localized!" = "Ich bin übersetzt!";
     "I am also localized." = "Ich bin auch übersetzt.";
     "I am localized with a value of #{value}." = "Ich bin mit den wert #{value} übersetzt.";
-    "Export All Contents in "%@"…" = "Inhalt von "%@" exportieren…";
+    "Filename" = "Dateiname";
     """
     When I run `locamotion generate`
     Then the output should contain "No new strings added to resources/de.lproj/Localizable.strings"
@@ -128,14 +128,14 @@ Feature: Locamotion generate
       "I am localized!" = "Tengo traduccion!";
       "I am also localized." = "Yo tambien tengo traduccion.";
       "I am localized with a value of #{value}." = "Tengo traduccion con el valor #{value}.";
-      "Export All Contents in "%@"…" = "Exportar contenidos de "%@"…";
+      "Filename" = "Nombre de archivo";
       """
     And the file "resources/de.lproj/Localizable.strings" should contain:
       """
       "I am localized!" = "Ich bin übersetzt!";
       "I am also localized." = "Ich bin auch übersetzt.";
       "I am localized with a value of #{value}." = "Ich bin mit den wert #{value} übersetzt.";
-      "Export All Contents in "%@"…" = "Inhalt von "%@" exportieren…";
+      "Filename" = "Dateiname";
       """
 
   Scenario: Attempt to run Locamotion where there's no RubyMotion project

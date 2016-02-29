@@ -7,7 +7,7 @@ describe "Slurp" do
     content = <<-eos
     "I am localized!"._
     "I am also localized."._
-    "Export \"%@\" Object…"._
+    field = NSString.dateTimeFieldWithVariable('filename', label: 'Filename'._)
     eos
     File.open('/tmp/rm_project/app/test1.rb', 'a+') { |f| f.write(content) }
     File.open('/tmp/rm_project/app/test2.rb', 'a+') { |f| f.write("\"I am to be localized\"._") }
@@ -19,7 +19,7 @@ describe "Slurp" do
   end
 
   it "gets all localizable strings" do
-    expect(@app.parse_rubymotion_app('/tmp/rm_project/app/**/*.rb')).to match_array(["I am localized!", "I am also localized.", "I am to be localized", "Export \"%@\" Object…"])
+    expect(@app.parse_rubymotion_app('/tmp/rm_project/app/**/*.rb')).to match_array(["I am localized!", "I am also localized.", "I am to be localized", "Filename"])
   end
 
   it "announces 4 finished strings" do

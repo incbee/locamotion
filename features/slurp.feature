@@ -18,7 +18,7 @@ Feature: Locamotion slurp
       """
       value = 3
       string = "I am localized with a value of #{value}."._
-      item.title = NSString.stringWithFormat("Export All Contents in "%@"…"._, object.name)
+      field = NSString.dateTimeFieldWithVariable('filename', label: 'Filename'._)
       """
     And a file named "rm-project/app/test3.rb" with:
       """
@@ -37,7 +37,7 @@ Feature: Locamotion slurp
       "I am localized!" = "I am localized!";
       "I am also localized." = "I am also localized.";
       "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
-      "Export All Contents in "%@"…" = "Export All Contents in "%@"…";
+      "Filename" = "Filename";
       "first string" = "first string";
       "second string" = "second string";
       "third string" = "third string";
@@ -49,7 +49,7 @@ Feature: Locamotion slurp
 
     Given a file named "resources/en.lproj/Localizable.strings" with:
     """
-    "Export All Contents in "%@"…" = "Export All Contents in "%@"…";
+    "Filename" = "Filename";
     "I am localized!" = "I am localized!";
     """
     When I run `locamotion slurp`
@@ -72,7 +72,7 @@ Feature: Locamotion slurp
     "I am localized!" = "I am localized!";
     "I am also localized." = "I am also localized.";
     "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
-    "Export All Contents in "%@"…" = "Export All Contents in "%@"…";
+    "Filename" = "Filename";
     "first string" = "first string";
     "second string" = "second string";
     "third string" = "third string";
@@ -84,7 +84,7 @@ Feature: Locamotion slurp
     "I am localized!" = "I am localized!";
     "I am also localized." = "I am also localized.";
     "I am localized with a value of #{value}." = "I am localized with a value of #{value}.";
-    "Export All Contents in "%@"…" = "Export All Contents in "%@"…";
+    "Filename" = "Filename";
     "first string" = "first string";
     "second string" = "second string";
     "third string" = "third string";
