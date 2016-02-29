@@ -27,7 +27,7 @@ module Locamotion
     desc "--version, -v", "print the version"
 
     def __print_version
-      puts '0.0.3'
+      puts '0.0.5'
     end
 
     no_commands {
